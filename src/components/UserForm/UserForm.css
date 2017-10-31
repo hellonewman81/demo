@@ -1,0 +1,85 @@
+
+.uform-form {
+  padding: 0 .75rem;
+}
+
+.uform-header-title {
+  border-bottom: 1px solid #9a9a9a;
+  color: #b0b8bc;
+  font-size: .675rem;
+  text-transform: uppercase;
+}
+
+.uform-label {
+  font-size: .75rem;
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: .25rem;
+}
+
+.uform-input-block {
+  margin-bottom: .75rem;
+  vertical-align: top;
+}
+
+.uform-input {
+  padding: .5rem;
+  border: 1px solid #9a9a9a;
+  border-radius: 5px;
+  width: 100%;
+  font-size: 1rem;
+}
+
+.uform-invalid-msg {
+  font-size: 0.75rem;
+  color: #FF0000;
+  padding: .25rem 0 0;
+}
+
+.uform-controls {
+  margin-top: 1rem;
+}
+
+.uform-controls-block {
+  margin-bottom: .75rem;
+  vertical-align: top;
+  display: inline-block;
+  width: 50%;
+}
+
+.uform-controls > .uform-controls-block:nth-child(odd) {
+  padding: 0 .75rem 0 0;
+}
+
+.uform-controls > .uform-controls-block:nth-child(even) {
+  padding: 0 0 0 .75rem;
+}
+
+/* update the layout for bigger screen sizes */
+
+@media screen and (min-width: 768px) {
+
+  .uform-form {
+    padding: 0;
+  }
+
+  .uform-fields > .uform-input-block:nth-child(odd) {
+    padding: 0 .75rem 0 0;
+  }
+
+  .uform-fields > .uform-input-block:nth-child(even) {
+    padding: 0 0 0 .75rem;
+  }
+
+  .uform {
+    max-width: 430px;
+    margin-left: auto;
+    margin-right: 2rem;
+  }
+
+  .uform-input-block {
+    display: inline-block;
+    width: 50%;
+  }
+
+}
