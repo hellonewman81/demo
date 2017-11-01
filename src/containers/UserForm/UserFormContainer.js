@@ -6,13 +6,12 @@ import {getFormValues, getFormSyncErrors, getFormMeta, SubmissionError} from 're
 
 const uFormSubmit = () => {
   alert("Thanks...")
-
   return false
 }
 
 const FormContainer = (props) => (
   <div>
-    <UserForm {...props} uFormSubmit={uFormSubmit}/>
+    <UserForm {...props} onSubmit={uFormSubmit}/>
   </div>
 )
 

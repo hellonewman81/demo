@@ -29,7 +29,7 @@ const UserForm = props => {
 
         :
 
-        <form className="uform-form" onSubmit={handleSubmit(uFormSubmit)} >
+        <form className="uform-form" onSubmit={handleSubmit} >
 
           <div className="uform-header">
             <h3 className="uform-header-title">Personal Details</h3>
@@ -128,7 +128,7 @@ const UserForm = props => {
               </button>
             </div>
             <div className="uform-controls-block">
-              <button className="uform-btn uform-btn-pmy" type="submit" disabled={pristine || submitting}>
+              <button className="uform-btn uform-btn-pmy" type="submit" disabled={submitting}>
                 Create hCard
               </button>
             </div>
