@@ -1,40 +1,42 @@
-import {connect} from 'react-redux';
+import { connect } from 'react-redux';
 import React from 'react';
-import {updateAvatarImg, toggleUploader} from '../../actions'
+import { updateAvatarImg, toggleUploader } from '../../actions';
 import UserForm from '../../components/UserForm/UserForm.js';
-import {getFormValues, getFormSyncErrors, getFormMeta, SubmissionError} from 'redux-form';
+import {
+  getFormValues,
+  getFormSyncErrors,
+  getFormMeta,
+  SubmissionError
+} from 'redux-form';
 
 const uFormSubmit = () => {
-  alert("Thanks...")
-  return false
-}
+  alert('Thanks...');
+  return false;
+};
 
-const FormContainer = (props) => (
+const FormContainer = props => (
   <div>
-    <UserForm {...props} onSubmit={uFormSubmit}/>
+    <UserForm {...props} onSubmit={uFormSubmit} />
   </div>
-)
+);
 
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
   return {
     user: getFormValues('user')(state),
     userSyncErrors: getFormSyncErrors('user')(state),
     userMeta: getFormMeta('user')(state),
     uri: state.app.uri ? state.app.uri : false,
     displayUploader: state.app.uploader_vis
-  }
-}
+  };
+};
 
-const mapDispatchToProps = (dispatch) => ({
-  updateAvatar: (uri) => {
-    dispatch(updateAvatarImg(uri))
+const mapDispatchToProps = dispatch => ({
+  updateAvatar: uri => {
+    dispatch(updateAvatarImg(uri));
   },
-  toggleUploader: (uri) => {
-    dispatch(toggleUploader())
+  toggleUploader: uri => {
+    dispatch(toggleUploader());
   }
 });
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps,
-)(FormContainer);
+export default connect(mapStateToProps, mapDispatchToProps)(FormContainer);
