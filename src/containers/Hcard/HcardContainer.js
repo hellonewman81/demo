@@ -1,7 +1,6 @@
 import { connect } from 'react-redux';
 import React from 'react';
-/* import { pagerUp } from '../actions' */
-import Hcard from '../../components/Hcard/Hcard.js';
+import Hcard from '../../components/Hcard/';
 import { getFormValues, getFormSyncErrors, getFormMeta } from 'redux-form';
 
 const HcardContainer = props => (
@@ -19,10 +18,6 @@ const mapStateToProps = state => {
   };
 };
 
-const mapDispatchToProps = dispatch => ({
-  onCheckoutSubmit: () => {
-    // dispatch(checkoutSubmit())
-  }
-});
+const mapDispatchToProps = dispatch => ({});
 
 export default connect(mapStateToProps, mapDispatchToProps)(HcardContainer);

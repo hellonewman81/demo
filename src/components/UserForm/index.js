@@ -1,6 +1,6 @@
 import React from 'react';
 import { Field, reduxForm } from 'redux-form';
-import Upload from '../Upload/Upload';
+import Upload from '../Upload/';
 import './UserForm.css';
 
 // render input for redux form Fields

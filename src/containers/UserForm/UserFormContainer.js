@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import React from 'react';
 import { updateAvatarImg, toggleUploader } from '../../actions';
-import UserForm from '../../components/UserForm/UserForm.js';
+import UserForm from '../../components/UserForm/index.js';
 import { getFormValues, getFormSyncErrors, getFormMeta } from 'redux-form';
 
 const uFormSubmit = () => {
