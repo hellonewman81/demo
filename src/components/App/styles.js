@@ -16,6 +16,10 @@ export const Wrapper = styled.div`
 export const Title = styled.h1`
   color: goldenrod;
   font-weight: 400;
+  text-align: center;
+  ${media.desktop`
+	text-align: left;
+	`};
 `;
 
 // Title

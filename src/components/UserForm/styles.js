@@ -1,6 +1,12 @@
 import styled from 'styled-components';
+import { media } from '../ui/index';
 
-export const UformForm = styled.form``;
+export const UformForm = styled.form`
+  padding: 0 1rem;
+  ${media.desktop`
+	padding: 0;
+	`};
+`;
 
 export const UformHeader = styled.header``;
 
@@ -25,11 +31,14 @@ export const UformInput = styled.input`
 export const UformInputBlock = styled.div`
   margin-bottom: 0.75rem;
   vertical-align: top;
-  ${props =>
+  width: 100%;
+  ${media.desktop`
+	width: 50%;
+	${props =>
     props.odd
       ? 'padding: 0 .75rem 0 0;'
       : 'padding: 0 0 0 .75rem;'} display: inline-block;
-  width: 50%;
+	`};
 `;
 
 export const UformLabel = styled.label`
