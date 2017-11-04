@@ -1,5 +1,5 @@
 .hcard {
-  margin-top: 0.75rem;
+  margin-top: .75rem;
   border-bottom: 2px solid #9a9a9a;
 }
 
@@ -10,7 +10,7 @@
   text-transform: uppercase;
   font-weight: 400;
   margin: 0;
-  padding: 0.25rem 2rem;
+  padding: .25rem 2rem;
 }
 
 .hcard-header {
@@ -38,7 +38,7 @@
   position: absolute;
   bottom: -15px;
   right: 2rem;
-  padding: 0.125rem;
+  padding: .125rem;
   display: block;
   height: auto;
   width: 85px;
@@ -62,7 +62,7 @@
 
 .hcard-row {
   border-bottom: 1px solid #dbe0e2;
-  margin-bottom: 0.25rem;
+  margin-bottom: .25rem;
   min-height: 1.5rem;
 }
 
@@ -73,7 +73,7 @@
 
 .hcard-label {
   color: #34495e;
-  font-size: 0.625rem;
+  font-size: .625rem;
   display: inline-block;
   text-transform: uppercase;
   padding-right: 1rem;
@@ -85,10 +85,13 @@
 }
 
 @media screen and (min-width: 768px) {
+
   .hcard {
     margin-top: 4.75rem;
   }
+
   .hcard-title {
     padding: 0;
   }
+
 }

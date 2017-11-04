@@ -10,6 +10,7 @@
    Base styles: opinionated defaults
    ========================================================================== */
 
+
 html {
   color: #222;
   font-size: 1em;
@@ -19,9 +20,7 @@ html {
   padding: 0;
   box-sizing: border-box;
 }
-*,
-*:before,
-*:after {
+*, *:before, *:after {
   box-sizing: inherit;
 }
 
@@ -106,9 +105,10 @@ textarea {
    Author's custom styles
    ========================================================================== */
 
-html,
-body {
-  height: 100%;
+
+
+html, body{
+  height:100%;
 }
 
 body {
@@ -141,8 +141,9 @@ body {
 }
 
 .uform-btn-pmy:hover {
-  background-color: #3cb0fd;
+  background-color: #3cb0fd ;
 }
+
 
 /* ==========================================================================
    Helper classes
@@ -228,7 +229,7 @@ body {
 
 .clearfix:before,
 .clearfix:after {
-  content: ' '; /* 1 */
+  content: " "; /* 1 */
   display: table; /* 2 */
 }
 
@@ -247,9 +248,9 @@ body {
 }
 
 @media print,
-  (-webkit-min-device-pixel-ratio: 1.25),
-  (min-resolution: 1.25dppx),
-  (min-resolution: 120dpi) {
+(-webkit-min-device-pixel-ratio: 1.25),
+(min-resolution: 1.25dppx),
+(min-resolution: 120dpi) {
   /* Style adjustments for high resolution devices */
 }
 
@@ -276,11 +277,11 @@ body {
   }
 
   a[href]:after {
-    content: ' (' attr(href) ')';
+    content: " (" attr(href) ")";
   }
 
   abbr[title]:after {
-    content: ' (' attr(title) ')';
+    content: " (" attr(title) ")";
   }
 
   /*
@@ -288,9 +289,9 @@ body {
    * or use the `javascript:` pseudo protocol
    */
 
-  a[href^='#']:after,
-  a[href^='javascript:']:after {
-    content: '';
+  a[href^="#"]:after,
+  a[href^="javascript:"]:after {
+    content: "";
   }
 
   pre {
