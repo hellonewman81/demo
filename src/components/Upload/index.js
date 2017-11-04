@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import Cropper from 'react-cropper';
 import 'cropperjs/dist/cropper.css';
-import './Upload.css';
 
 /* global FileReader */
 

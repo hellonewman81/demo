@@ -24,3 +24,20 @@ export const media = Object.keys(sizes).reduce((accumulator, label) => {
 export const InlineBlock = styled.span`
   display: inline-block;
 `;
+
+export const Button = styled.button`
+  background: ${props => (props.primary ? '#3cb0fd' : '#627b8b')};
+  border-radius: 4px;
+  color: #ffffff;
+  font-size: 20px;
+  padding: 10px 20px 10px 20px;
+  border: 0;
+  border-bottom: solid #1f628d 2px;
+  text-decoration: none;
+  display: block;
+  width: 100%;
+
+  &:hover {
+    background: ${props => (props.primary ? '#3cb0fd' : '#445966')};
+  }
+`;
