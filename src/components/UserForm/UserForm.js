@@ -25,12 +25,10 @@ const RenderInput = ({ input, label, type, meta: { touched, error } }) => (
 const UserForm = props => {
   const {
     handleSubmit,
-    pristine,
     submitting,
     updateAvatar,
     displayUploader,
-    toggleUploader,
-    uFormSubmit
+    toggleUploader
   } = props;
   return (
     <div className="uform">

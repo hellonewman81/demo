@@ -2,12 +2,7 @@ import { connect } from 'react-redux';
 import React from 'react';
 import { updateAvatarImg, toggleUploader } from '../../actions';
 import UserForm from '../../components/UserForm/UserForm.js';
-import {
-  getFormValues,
-  getFormSyncErrors,
-  getFormMeta,
-  SubmissionError
-} from 'redux-form';
+import { getFormValues, getFormSyncErrors, getFormMeta } from 'redux-form';
 
 const uFormSubmit = () => {
   alert('Thanks...');
