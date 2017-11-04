@@ -1,31 +1,23 @@
-import {connect} from 'react-redux';
+import { connect } from 'react-redux';
 import React from 'react';
-/* import { pagerUp } from '../actions' */
-import Hcard from '../../components/Hcard/Hcard.js';
-import {getFormValues, getFormSyncErrors, getFormMeta} from 'redux-form';
+import Hcard from '../../components/Hcard/';
+import { getFormValues, getFormSyncErrors, getFormMeta } from 'redux-form';
 
-const HcardContainer = (props) => (
+const HcardContainer = props => (
   <div>
-    <Hcard {...props}/>
+    <Hcard {...props} />
   </div>
-)
+);
 
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
   return {
     user: getFormValues('user')(state),
     userSyncErrors: getFormSyncErrors('user')(state),
     userMeta: getFormMeta('user')(state),
     uri: state.app.uri ? state.app.uri : false
-  }
-}
+  };
+};
 
-const mapDispatchToProps = (dispatch) => ({
-  onCheckoutSubmit: () => {
-    // dispatch(checkoutSubmit())
-  }
-});
+const mapDispatchToProps = dispatch => ({});
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps,
-)(HcardContainer);
+export default connect(mapStateToProps, mapDispatchToProps)(HcardContainer);

@@ -1,9 +1,9 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import './App.css';
 
 // import child containers for user form and hcard preview.
-import FormContainer from '../../containers/UserForm/UserFormContainer'
-import HcardContainer from '../../containers/Hcard/HcardContainer'
+import FormContainer from '../../containers/UserForm/UserFormContainer';
+import HcardContainer from '../../containers/Hcard/HcardContainer';
 
 class App extends Component {
   render() {
@@ -29,4 +29,4 @@ class App extends Component {
   }
 }
 
-export default App
+export default App;

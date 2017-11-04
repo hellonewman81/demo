@@ -1,42 +1,48 @@
-import React from 'react'
-import {Field, reduxForm} from 'redux-form'
-import Upload from '../Upload/Upload'
+import React from 'react';
+import { Field, reduxForm } from 'redux-form';
+import Upload from '../Upload/';
 import './UserForm.css';
 
 // render input for redux form Fields
-const RenderInput = ({input, label, type, meta: {touched, error}}) =>
-  <div className={touched && error ? "uform-input-block has-error" : "uform-input-block" }>
+const RenderInput = ({ input, label, type, meta: { touched, error } }) => (
+  <div
+    className={
+      touched && error ? 'uform-input-block has-error' : 'uform-input-block'
+    }
+  >
     <label className="uform-label">{label}</label>
-    <input {...input}
-           placeholder={label}
-           type={type}
-           className={touched && error ? "uform-input is-invalid" : "uform-input" }
+    <input
+      {...input}
+      placeholder={label}
+      type={type}
+      className={touched && error ? 'uform-input is-invalid' : 'uform-input'}
     />
     {touched && error && <div className="uform-invalid-msg">{error}</div>}
   </div>
+);
 
 // Render user form component
 const UserForm = props => {
-  const {handleSubmit, pristine, submitting, updateAvatar, displayUploader, toggleUploader, uFormSubmit} = props
+  const {
+    handleSubmit,
+    submitting,
+    updateAvatar,
+    displayUploader,
+    toggleUploader
+  } = props;
   return (
     <div className="uform">
-
-      {displayUploader ?
-
+      {displayUploader ? (
         <div>
-          <Upload updateAvatar={updateAvatar} toggleUploader={toggleUploader}/>
+          <Upload updateAvatar={updateAvatar} toggleUploader={toggleUploader} />
         </div>
-
-        :
-
-        <form className="uform-form" onSubmit={handleSubmit} >
-
+      ) : (
+        <form className="uform-form" onSubmit={handleSubmit}>
           <div className="uform-header">
             <h3 className="uform-header-title">Personal Details</h3>
           </div>
 
           <div className="uform-fields">
-
             <Field
               component={RenderInput}
               name="firstName"
@@ -64,7 +70,6 @@ const UserForm = props => {
               type="text"
               label="Phone"
             />
-
           </div>
 
           <div className="uform-header">
@@ -72,7 +77,6 @@ const UserForm = props => {
           </div>
 
           <div className="uform-fields">
-
             <Field
               name="housename"
               component={RenderInput}
@@ -114,55 +118,71 @@ const UserForm = props => {
               type="text"
               label="Country"
             />
-
           </div>
 
           <div className="uform-controls">
             <div className="uform-controls-block">
-              <button className="uform-btn" type="button"
-                      onClick={e => {
-                        toggleUploader()
-                        e.preventDefault()
-                      }}>
+              <button
+                className="uform-btn"
+                type="button"
+                onClick={e => {
+                  toggleUploader();
+                  e.preventDefault();
+                }}
+              >
                 Upload Avatar
               </button>
             </div>
             <div className="uform-controls-block">
-              <button className="uform-btn uform-btn-pmy" type="submit" disabled={submitting}>
+              <button
+                className="uform-btn uform-btn-pmy"
+                type="submit"
+                disabled={submitting}
+              >
                 Create hCard
               </button>
             </div>
           </div>
         </form>
-      }
+      )}
     </div>
-  )
-}
-
+  );
+};
 
 const validate = values => {
-  const errors = {}
+  const errors = {};
 
-  let requiredFields = ['firstName', 'lastName', 'email', 'telephone', 'housename', 'street', 'state', 'suburb', 'postcode', 'country', 'avatarFile']
+  let requiredFields = [
+    'firstName',
+    'lastName',
+    'email',
+    'telephone',
+    'housename',
+    'street',
+    'state',
+    'suburb',
+    'postcode',
+    'country',
+    'avatarFile'
+  ];
 
   requiredFields.forEach(field => {
     if (!values[field]) {
-      errors[field] = 'This field is required'
+      errors[field] = 'This field is required';
     }
-  })
+  });
   if (!values.email) {
-    errors.email = 'This field is required'
+    errors.email = 'This field is required';
   } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
-    errors.email = 'Invalid email address'
+    errors.email = 'Invalid email address';
   }
   if (!values.postcode) {
-    errors.postcode = 'This field is required'
+    errors.postcode = 'This field is required';
   } else if (isNaN(Number(values.postcode))) {
-    errors.postcode = 'Must be a number'
+    errors.postcode = 'Must be a number';
   }
-  return errors
-}
-
+  return errors;
+};
 
 export default reduxForm({
   form: 'user',
@@ -170,4 +190,4 @@ export default reduxForm({
   destroyOnUnmount: false,
   forceUnregisterOnUnmount: true,
   initialValues: {}
-})(UserForm)
+})(UserForm);
