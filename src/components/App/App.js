@@ -19,14 +19,14 @@ class App extends Component {
       <Wrapper>
         <WrapperInner>
           <WrapperLeft>
-            <LeftInset className="app-container-left-inset">
+            <LeftInset>
               <Title>hCard Builder</Title>
               {/* User hcard input form container */}
               <FormContainer />
             </LeftInset>
           </WrapperLeft>
           <WrapperRight>
-            <RightInset className="app-container-right-inset">
+            <RightInset>
               {/* User hcard display container */}
               <HcardContainer />
             </RightInset>
