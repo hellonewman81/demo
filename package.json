@@ -6,8 +6,6 @@
     "core-js": "^2.5.1",
     "husky": "^0.14.3",
     "lint-staged": "^4.3.0",
-    "node-sass-chokidar": "0.0.3",
-    "npm-run-all": "^4.1.1",
     "prettier": "^1.7.4",
     "react": "^16.0.0",
     "react-cropper": "^1.0.0",
@@ -26,12 +24,8 @@
   },
   "scripts": {
     "precommit": "lint-staged",
-    "build-css": "node-sass-chokidar --include-path ./src --include-path ./node_modules src/ -o src/",
-    "watch-css": "npm run build-css && node-sass-chokidar --include-path ./src --include-path ./node_modules src/ -o src/ --watch --recursive",
-    "start-js": "react-scripts start",
-    "start": "npm-run-all -p watch-css start-js",
-    "build-js": "react-scripts build",
-    "build": "npm-run-all build-css build-js",
+    "start": "react-scripts start",
+    "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   }
