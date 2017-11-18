@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Cropper from 'react-cropper';
 import 'cropperjs/dist/cropper.css';
-import './Upload.css';
+import Dropzone from 'react-dropzone';
 
 /* global FileReader */
 
@@ -17,6 +17,21 @@ export default class Upload extends Component {
     this.cropImage = this.cropImage.bind(this);
     this.onChange = this.onChange.bind(this);
     this.useDefaultImage = this.useDefaultImage.bind(this);
+    this.onDrop = this.onDrop.bind(this);
+  }
+
+  onDrop(files) {
+    // this.setState({ src: files });
+
+    console.log(files);
+
+    if (files[0]) {
+      const reader = new FileReader();
+      reader.onload = () => {
+        this.setState({ src: reader.result });
+      };
+      reader.readAsDataURL(files[0]);
+    }
   }
 
   onChange(e) {
@@ -70,16 +85,26 @@ export default class Upload extends Component {
             onChange={this.onChange}
             style={{ margin: '0 .5rem .5rem' }}
           />
-          <Cropper
-            style={{ height: 300, width: '100%', backgroundColor: '#e7e7e7' }}
-            aspectRatio={85 / 105}
-            preview=".img-preview"
-            guides={true}
-            src={this.state.src}
-            ref={cropper => {
-              this.cropper = cropper;
-            }}
-          />
+
+          {!this.state.src ? (
+            <Dropzone onDrop={this.onDrop}>
+              <p>
+                Try dropping some files here, or click to select files to
+                upload.
+              </p>
+            </Dropzone>
+          ) : (
+            <Cropper
+              style={{ height: 300, width: '100%', backgroundColor: '#e7e7e7' }}
+              aspectRatio={85 / 105}
+              preview=".img-preview"
+              guides={true}
+              src={this.state.src}
+              ref={cropper => {
+                this.cropper = cropper;
+              }}
+            />
+          )}
         </div>
         <div style={{ marginTop: '1.5rem' }}>
           <div

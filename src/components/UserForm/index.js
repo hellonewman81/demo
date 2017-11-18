@@ -1,24 +1,28 @@
 import React from 'react';
 import { Field, reduxForm } from 'redux-form';
 import Upload from '../Upload/';
-import './UserForm.css';
+
+import {
+  UformForm,
+  UformInput,
+  UformInputBlock,
+  UformLabel,
+  InvalidMsg,
+  UformHeader,
+  UformTitle,
+  UformFieldSet,
+  UformControlsBlock,
+  UformControls
+} from './styles';
+import { Button } from '../ui/';
 
 // render input for redux form Fields
-const RenderInput = ({ input, label, type, meta: { touched, error } }) => (
-  <div
-    className={
-      touched && error ? 'uform-input-block has-error' : 'uform-input-block'
-    }
-  >
-    <label className="uform-label">{label}</label>
-    <input
-      {...input}
-      placeholder={label}
-      type={type}
-      className={touched && error ? 'uform-input is-invalid' : 'uform-input'}
-    />
-    {touched && error && <div className="uform-invalid-msg">{error}</div>}
-  </div>
+const RenderInput = ({ input, label, type, odd, meta: { touched, error } }) => (
+  <UformInputBlock odd={odd} error={error}>
+    <UformLabel>{label}</UformLabel>
+    <UformInput {...input} placeholder={label} type={type} />
+    {touched && error && <InvalidMsg>{error}</InvalidMsg>}
+  </UformInputBlock>
 );
 
 // Render user form component
@@ -31,23 +35,22 @@ const UserForm = props => {
     toggleUploader
   } = props;
   return (
-    <div className="uform">
+    <div>
       {displayUploader ? (
-        <div>
-          <Upload updateAvatar={updateAvatar} toggleUploader={toggleUploader} />
-        </div>
+        <Upload updateAvatar={updateAvatar} toggleUploader={toggleUploader} />
       ) : (
-        <form className="uform-form" onSubmit={handleSubmit}>
-          <div className="uform-header">
-            <h3 className="uform-header-title">Personal Details</h3>
-          </div>
+        <UformForm onSubmit={handleSubmit}>
+          <UformHeader>
+            <UformTitle>Personal Details</UformTitle>
+          </UformHeader>
 
-          <div className="uform-fields">
+          <UformFieldSet>
             <Field
               component={RenderInput}
               name="firstName"
               label="First Name"
               type="text"
+              odd={true}
             />
 
             <Field
@@ -62,6 +65,7 @@ const UserForm = props => {
               component={RenderInput}
               type="email"
               label="Email"
+              odd={true}
             />
 
             <Field
@@ -70,18 +74,19 @@ const UserForm = props => {
               type="text"
               label="Phone"
             />
-          </div>
+          </UformFieldSet>
 
-          <div className="uform-header">
-            <h3 className="uform-header-title">Address</h3>
-          </div>
+          <UformHeader>
+            <UformTitle>Address</UformTitle>
+          </UformHeader>
 
-          <div className="uform-fields">
+          <UformFieldSet>
             <Field
               name="housename"
               component={RenderInput}
               type="text"
               label="House name or #"
+              odd={true}
             />
 
             <Field
@@ -96,6 +101,7 @@ const UserForm = props => {
               component={RenderInput}
               type="text"
               label="Suburb"
+              odd={true}
             />
 
             <Field
@@ -110,6 +116,7 @@ const UserForm = props => {
               component={RenderInput}
               type="text"
               label="Postcode"
+              odd={true}
             />
 
             <Field
@@ -118,12 +125,11 @@ const UserForm = props => {
               type="text"
               label="Country"
             />
-          </div>
+          </UformFieldSet>
 
-          <div className="uform-controls">
-            <div className="uform-controls-block">
-              <button
-                className="uform-btn"
+          <UformControls>
+            <UformControlsBlock odd>
+              <Button
                 type="button"
                 onClick={e => {
                   toggleUploader();
@@ -131,19 +137,15 @@ const UserForm = props => {
                 }}
               >
                 Upload Avatar
-              </button>
-            </div>
-            <div className="uform-controls-block">
-              <button
-                className="uform-btn uform-btn-pmy"
-                type="submit"
-                disabled={submitting}
-              >
+              </Button>
+            </UformControlsBlock>
+            <UformControlsBlock>
+              <Button primary type="submit" disabled={submitting}>
                 Create hCard
-              </button>
-            </div>
-          </div>
-        </form>
+              </Button>
+            </UformControlsBlock>
+          </UformControls>
+        </UformForm>
       )}
     </div>
   );

@@ -1,75 +1,74 @@
 import React from 'react';
 import avatar from '../../svg/avatar.svg';
-import './Hcard.css';
+// import './Hcard.css';
+import { InlineBlock } from '../ui/';
+import {
+  Wrapper,
+  HcardBock,
+  HcardHeader,
+  HcardRow,
+  HcardColumn,
+  HcardLabel,
+  HcardHeaderName,
+  Title,
+  HcardAvatar,
+  HcardAvatarImg
+} from './styles';
 
 const Hcard = props => {
   const { uri, user = {} } = props;
   return (
-    <div className="hcard">
-      <div>
-        <h2 className="hcard-title">Hcard Preview</h2>
-        <div id="hcard-Andrew-William-Newman" className="vcard hcard-block">
-          <div className="hcard-header">
-            <div className="hcard-header-name fn n">
-              <span className="given-name d-inline-block">
-                {user.firstName}
-              </span>{' '}
-              <span className="family-name d-inline-block">
-                {user.lastName}
-              </span>
-            </div>
-            <span className="hcard-avatar">
-              <img
-                src={uri ? uri : avatar}
-                className="hcard-avatar-img"
-                alt="avatar"
-              />
+    <Wrapper>
+      <Title>Hcard Preview</Title>
+      <HcardBock id="hcard-Andrew-William-Newman" className="vcard">
+        <HcardHeader>
+          <HcardHeaderName className="fn n">
+            <InlineBlock className="given-name">{user.firstName}</InlineBlock>
+            <InlineBlock className="family-name">{user.lastName}</InlineBlock>
+          </HcardHeaderName>
+          <HcardAvatar>
+            <HcardAvatarImg src={uri ? uri : avatar} alt="avatar" />
+          </HcardAvatar>
+        </HcardHeader>
+
+        <HcardRow>
+          <HcardLabel>Email</HcardLabel>
+          <InlineBlock className="email">{user.email}</InlineBlock>
+        </HcardRow>
+
+        <HcardRow>
+          <HcardLabel>Phone</HcardLabel>
+          <InlineBlock className="tel">{user.telephone}</InlineBlock>
+        </HcardRow>
+
+        <div className="adr">
+          <HcardRow>
+            <HcardLabel>Address</HcardLabel>
+            <span className="street-address">
+              {user.housename} {user.street}
             </span>
-          </div>
+          </HcardRow>
 
-          <div className="hcard-row">
-            <span className="hcard-label">Email</span>
-            <span className="email">{user.email}</span>
-          </div>
+          <HcardRow padding>
+            <InlineBlock className="locality">{user.suburb}</InlineBlock>
+            <InlineBlock className="region">
+              {user.state && `, ${user.state}`}
+            </InlineBlock>
+          </HcardRow>
 
-          <div className="hcard-row">
-            <span className="hcard-label">Phone</span>
-            <span className="tel d-inline-block">{user.telephone}</span>
-          </div>
-
-          <div className="adr">
-            <div className="hcard-row">
-              <span className="hcard-label">Address</span>
-              <span className="street-address">
-                {user.housename} {user.street}
-              </span>
-            </div>
-
-            <div className="hcard-row hcard-label-space">
-              <span className="locality d-inline-block">{user.suburb}</span>
-              <span className="region d-inline-block">
-                {user.state && `, ${user.state}`}
-              </span>
-            </div>
-
-            <div className="hcard-row">
-              <div className="hcard-column">
-                <span className="hcard-label">Postcode</span>
-                <span className="postal-code d-inline-block">
-                  {user.postcode}
-                </span>
-              </div>
-              <div className="hcard-column">
-                <span className="hcard-label">Country</span>
-                <span className="country-name d-inline-block">
-                  {user.country}
-                </span>
-              </div>
-            </div>
-          </div>
+          <HcardRow>
+            <HcardColumn>
+              <HcardLabel>Postcode</HcardLabel>
+              <InlineBlock className="postal-code">{user.postcode}</InlineBlock>
+            </HcardColumn>
+            <HcardColumn>
+              <HcardLabel>Country</HcardLabel>
+              <InlineBlock className="country-name">{user.country}</InlineBlock>
+            </HcardColumn>
+          </HcardRow>
         </div>
-      </div>
-    </div>
+      </HcardBock>
+    </Wrapper>
   );
 };
 
