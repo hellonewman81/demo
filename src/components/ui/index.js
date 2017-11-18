@@ -36,7 +36,6 @@ export const Button = styled.button`
   text-decoration: none;
   display: block;
   width: 100%;
-
   &:hover {
     background: ${props => (props.primary ? '#3cb0fd' : '#445966')};
   }
